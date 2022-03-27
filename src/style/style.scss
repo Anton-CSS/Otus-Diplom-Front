@@ -1,0 +1,70 @@
+@import "~antd/dist/antd.css";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 64px;
+  background-color: #001529;
+  &__wrap {
+    height: 100%;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20px;
+  }
+}
+.user {
+  &__name {
+    width: 50%;
+    color: white;
+  }
+  &__menu {
+    height: 100%;
+    width: 100%;
+  }
+  &__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    background-color: transparent;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: #1890ff;
+      transition: all 0.3s linear;
+      cursor: pointer;
+    }
+    &__menu {
+      height: 100%;
+    }
+  }
+  &__logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    color: white;
+    background-color: transparent;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: #1890ff;
+      transition: all 0.3s linear;
+      cursor: pointer;
+    }
+  }
+}
+
+.login-page {
+  height: calc(100vh - 64px);
+}
+.events {
+  list-style: none;
+}
+
+h2{
+  text-align: center;
+}
