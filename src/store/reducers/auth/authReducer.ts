@@ -5,7 +5,7 @@ const initialState: AuthState = {
   isAuth: false,
   error: null,
   isLoading: false,
-  reg:false,
+  reg: false,
   user: {} as OneUser,
   clients: [] as IUser[],
 };

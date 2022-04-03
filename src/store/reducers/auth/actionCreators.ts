@@ -3,9 +3,9 @@ import {
   SetUserAction,
   SetIsLoadingAction,
   SetErrorAction,
-  SetClientsAction, SetREGAction,
+  SetClientsAction,
+  SetREGAction,
 } from "../type";
-
 
 import { IUser, OneUser } from "../../../models/user";
 import { AppDispatch } from "../../index";
@@ -114,35 +114,38 @@ export const AuthActionCreators = {
     }
   },
   registration:
-      (username: string, password: string) => async (dispatch: AppDispatch) => {
-         try{
-           const response = await fetch("http://localhost:5000/auth/registration", {
-             method: "POST",
-             headers: {
-               "Content-Type": "application/json;charset=utf-8",
-             },
-             body: JSON.stringify({username, password}),
-           });
-           const result = await response.json();
-           if(result) {
-             const response = await fetch("http://localhost:5000/auth/login", {
-               method: "POST",
-               headers: {
-                 "Content-Type": "application/json;charset=utf-8",
-               },
-               body: JSON.stringify({username, password}),
-             });
-             const token = await response.json();
-             if (token.token) {
-               localStorage.setItem("token", token.token);
-               dispatch(AuthActionCreators.setUser({username, password}));
-               dispatch(AuthActionCreators.setIsAuth(true));
-             }
-           }
-         }catch (e) {
-           dispatch(
-               AuthActionCreators.setError(`Server have crashed with error: ${e}`)
-           );
-         }
+    (username: string, password: string) => async (dispatch: AppDispatch) => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/auth/registration",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify({ username, password }),
+          }
+        );
+        const result = await response.json();
+        if (result) {
+          const newResponse = await fetch("http://localhost:5000/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify({ username, password }),
+          });
+          const token = await newResponse.json();
+          if (token.token) {
+            localStorage.setItem("token", token.token);
+            dispatch(AuthActionCreators.setUser({ username, password }));
+            dispatch(AuthActionCreators.setIsAuth(true));
+          }
+        }
+      } catch (e) {
+        dispatch(
+          AuthActionCreators.setError(`Server have crashed with error: ${e}`)
+        );
       }
+    },
 };

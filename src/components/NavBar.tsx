@@ -20,22 +20,27 @@ const NavBar: FC = () => {
           </>
         ) : (
           <div className="user__menu">
-              { !reg ?
-                  <span className="user__login" onClick={() => {
-                      navigate('/registration')
-                      setReg(!reg);
-                  }}>
-                   Register
-
-                  </span> :
-                  <span className="user__login" onClick={() => {
-                      navigate('/login');
-                      setReg(!reg);
-                  }}>
-                   Login
-                  </span>
-              }
-
+            {!reg ? (
+              <span
+                className="user__login"
+                onClick={() => {
+                  navigate("/registration");
+                  setReg(!reg);
+                }}
+              >
+                Register
+              </span>
+            ) : (
+              <span
+                className="user__login"
+                onClick={() => {
+                  navigate("/login");
+                  setReg(!reg);
+                }}
+              >
+                Login
+              </span>
+            )}
           </div>
         )}
       </div>

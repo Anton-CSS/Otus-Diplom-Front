@@ -13,6 +13,7 @@ const App: FC = () => {
       checkToken(localStorage.getItem("token"));
     }
   }, []);
+
   return (
     <Layout>
       <NavBar />

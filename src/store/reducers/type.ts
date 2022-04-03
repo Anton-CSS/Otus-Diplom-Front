@@ -38,12 +38,12 @@ export interface SetClientsAction {
 }
 
 export type AuthAction =
-    | SetAuthAction
-    | SetIsLoadingAction
-    | SetUserAction
-    | SetErrorAction
-    | SetClientsAction
-    | SetREGAction;
+  | SetAuthAction
+  | SetIsLoadingAction
+  | SetUserAction
+  | SetErrorAction
+  | SetClientsAction
+  | SetREGAction;
 
 export interface EventState {
   guests: IUser[];

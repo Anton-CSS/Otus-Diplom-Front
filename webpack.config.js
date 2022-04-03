@@ -7,7 +7,8 @@ if (process.env.NODE_ENV === "production") {
   mode = "production";
 }
 
-const PREFIX = process.env.NODE_ENV === "production" ? "Diplom-OTUS" : "/";
+const PREFIX =
+  process.env.NODE_ENV === "production" ? "/Otus-Diplom-Front" : "/";
 
 const name = () => (mode === "development" ? `[name]` : `[name].[contenthash]`);
 
@@ -52,7 +53,12 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../",
+            },
+          },
           "css-loader",
           {
             loader: "postcss-loader",

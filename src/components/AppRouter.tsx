@@ -9,16 +9,16 @@ const AppRouter: FC = () => {
   const { isAuth } = useTypedSelector((state) => state.auth);
 
   return isAuth ? (
-      <Routes>
-          <Route path="/" element={<Event/>}/>
-          <Route path="*" element={<Event/>}/>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Event />} />
+      <Route path="*" element={<Event />} />
+    </Routes>
   ) : (
-      <Routes>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/registration" element={<Registration/>}/>
-          <Route path="*" element={<Login/>}/>
-      </Routes>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/registration" element={<Registration />} />
+      <Route path="*" element={<Login />} />
+    </Routes>
   );
 };
 
