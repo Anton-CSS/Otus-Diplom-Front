@@ -1,4 +1,4 @@
-export const formDate = (date: Date) => {
+export const formDate = (date: Date): string => {
   const year = date.getFullYear();
   const month =
     date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;

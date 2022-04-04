@@ -30,6 +30,7 @@ const LoginForm: FC = () => {
       >
         <Input
           value={userName}
+          data-testid="userNameInput"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setUserName(e.target.value)
           }
@@ -43,6 +44,7 @@ const LoginForm: FC = () => {
       >
         <Input.Password
           value={password}
+          data-testid="passwordInput"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }

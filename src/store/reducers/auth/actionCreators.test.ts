@@ -41,7 +41,7 @@ describe('AuthActionCreators', () =>{
         expect(AuthActionCreators.setClients(clients)).toStrictEqual({ type:'SET_CLIENTS_ACTION', payload:clients});
     });
 
-    it('AuthActionCreators have field login', () =>{
+    it('AuthActionCreators have field login', async () =>{
         expect(AuthActionCreators.login).toBeInstanceOf(Function);
     });
     it('AuthActionCreators have field logout', () =>{

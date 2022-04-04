@@ -1,15 +1,14 @@
-import App from './App';
+import React, { FC } from "react";
+import {MemoryRouter} from "react-router-dom";
 import '@testing-library/jest-dom';
-import {render, screen} from '@testing-library/react';
+import {screen, render} from '@testing-library/react';
+import CalendarEvent from "./CalendarEvent";
 import {Provider} from "react-redux";
 import {store} from "../store";
-import {MemoryRouter} from "react-router-dom";
-import AppRouter from "./AppRouter";
-import React from "react";
-import userEvent from "@testing-library/user-event";
+import {IEvent} from "../models/event";
 
-describe('App', () =>{
-    it('App render', () =>{
+describe('CalendarEvent', () =>{
+    it('CalendarEvent render', () =>{
         Object.defineProperty(window, 'matchMedia', {
             writable: true,
             value: jest.fn().mockImplementation(query => ({
@@ -23,17 +22,15 @@ describe('App', () =>{
                 dispatchEvent: jest.fn(),
             })),
         });
-        const {getByRole, getByText, getByTestId} = render(
+        const event: IEvent = {author: 'Anton', status: "warning", guest: "Andrey", date: '2022.03.04', description: 'easy'}
+        const events = [event];
+        const {getByRole, getByText} = render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/']}>
-                    <AppRouter/>
+                <MemoryRouter initialEntries={['/', '/login', '/registration']}>
+                    <CalendarEvent events={events}/>
                 </MemoryRouter>
             </Provider>
         );
-
-        const passwordInput = getByTestId('passwordInput');
-        expect(getByText('Войти')).toBeInTheDocument();
-        expect(getByRole('textbox')).toBeInTheDocument();
-        expect(passwordInput).toBeInTheDocument();
+        expect(getByText('2022')).toBeInTheDocument();
     })
 })

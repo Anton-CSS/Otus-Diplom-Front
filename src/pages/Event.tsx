@@ -10,6 +10,7 @@ const Event: FC = () => {
   const { fetchGuests, receiveEvents } = useActions();
   const { user } = useTypedSelector((state) => state.auth);
   const { events } = useTypedSelector((state) => state.event);
+
   useEffect(() => {
     fetchGuests();
     receiveEvents(user.username);

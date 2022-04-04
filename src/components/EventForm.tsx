@@ -11,6 +11,7 @@ interface EventFormProps {
 }
 
 const EventForm: FC<EventFormProps> = ({ fun }) => {
+
   const { user } = useTypedSelector((state) => state.auth);
   const [event, setEvent] = useState<IEvent>({
     author: user.username,
@@ -43,7 +44,7 @@ const EventForm: FC<EventFormProps> = ({ fun }) => {
         name="description"
         rules={[{ required: true, message: "Обязательное поле" }]}
       >
-        <Input
+        <Input data-testid="description"
           onChange={(e) => setEvent({ ...event, description: e.target.value })}
           value={event.description}
         />
@@ -53,7 +54,7 @@ const EventForm: FC<EventFormProps> = ({ fun }) => {
         name="date"
         rules={[{ required: true, message: "Обязательное поле" }]}
       >
-        <DatePicker onChange={(date) => selectDate(date)} />
+        <DatePicker data-testid="date" onChange={(date) => selectDate(date)} />
       </Form.Item>
 
       <Form.Item
