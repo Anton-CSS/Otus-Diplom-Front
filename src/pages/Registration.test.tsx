@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 import '@testing-library/jest-dom';
 import {screen, render} from '@testing-library/react';
-import NavBar from "./NavBar";
+import Registration from "./Registration";
 import {Provider} from "react-redux";
 import {store} from "../store";
 import {MemoryRouter} from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 
 
-describe('NavBar', () =>{
-    it('NavBar render', () =>{
+
+describe('Registration', () =>{
+    it('Registration', () =>{
         Object.defineProperty(window, 'matchMedia', {
             writable: true,
             value: jest.fn().mockImplementation(query => ({
@@ -23,16 +23,18 @@ describe('NavBar', () =>{
                 dispatchEvent: jest.fn(),
             })),
         });
-        const {getByText} = render(
+        const {getByText, getByRole, getByTestId} = render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/', '/login', '/registration']}>
-                    <NavBar/>
+                    <Registration/>
                 </MemoryRouter>
             </Provider>
         );
-        expect(getByText('Register')).toBeInTheDocument();
-        expect(getByText('Register')).toHaveClass('user__login');
-        userEvent.click(getByText('Register'));
-        expect(getByText('Login')).toBeInTheDocument();
+        expect(getByText('Регистрация')).toBeInTheDocument();
+        expect(getByText('Имя пользователя')).toBeInTheDocument();
+        expect(getByText('Пароль')).toBeInTheDocument();
+        expect(getByText('Зарегистрироваться')).toBeInTheDocument();
+        expect(getByRole('button')).toBeInTheDocument();
+        expect(getByRole('textbox')).toBeInTheDocument();
     });
 })

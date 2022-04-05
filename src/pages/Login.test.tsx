@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import '@testing-library/jest-dom';
 import {screen, render} from '@testing-library/react';
-import NavBar from "./NavBar";
+import Login from "./Login";
 import {Provider} from "react-redux";
 import {store} from "../store";
 import {MemoryRouter} from "react-router-dom";
@@ -23,16 +23,19 @@ describe('NavBar', () =>{
                 dispatchEvent: jest.fn(),
             })),
         });
-        const {getByText} = render(
+        const {getByText, getByRole, getByTestId} = render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/', '/login', '/registration']}>
-                    <NavBar/>
+                    <Login/>
                 </MemoryRouter>
             </Provider>
         );
-        expect(getByText('Register')).toBeInTheDocument();
-        expect(getByText('Register')).toHaveClass('user__login');
-        userEvent.click(getByText('Register'));
-        expect(getByText('Login')).toBeInTheDocument();
+        expect(getByText('Пароль')).toBeInTheDocument();
+        expect(getByText('Войти')).toBeInTheDocument();
+        expect(getByRole('button')).toBeInTheDocument();
+        const passwordInput = getByTestId('passwordInput');
+        const userNameInput = getByTestId('userNameInput');
+        expect(userNameInput).toBeInTheDocument();
+        expect(passwordInput).toBeInTheDocument();
     });
 })

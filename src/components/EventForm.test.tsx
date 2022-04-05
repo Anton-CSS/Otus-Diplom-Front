@@ -30,7 +30,7 @@ describe('EventForm', () =>{
                 </MemoryRouter>
             </Provider>
         );
-        screen.debug();
+
         expect(getByText('Описание события')).toBeInTheDocument();
         expect(getByText('Выберите дату')).toBeInTheDocument();
         expect(getByText('Выберите гостя')).toBeInTheDocument();

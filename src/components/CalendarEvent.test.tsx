@@ -32,5 +32,6 @@ describe('CalendarEvent', () =>{
             </Provider>
         );
         expect(getByText('2022')).toBeInTheDocument();
+        screen.debug();
     })
 })

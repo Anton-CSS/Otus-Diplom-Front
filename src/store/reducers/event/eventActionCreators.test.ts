@@ -25,5 +25,6 @@ import {IEvent} from "../../../models/event";
          const boolean = true;
          expect(EventActionCreators.setIsEvLoading).toBeInstanceOf(Function);
          expect(EventActionCreators.setIsEvLoading(boolean)).toStrictEqual({type: "SET_IS_LOADING", payload: boolean})
-     })
+     });
+
  })

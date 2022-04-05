@@ -23,7 +23,7 @@ describe('AppRouter', () =>{
         });
         const {getByRole} = render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/', '*', '/login', '/registration']}>
+                <MemoryRouter initialEntries={['/', '/login', '/registration']}>
                     <AppRouter/>
                 </MemoryRouter>
             </Provider>

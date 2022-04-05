@@ -54,6 +54,4 @@ describe('AuthActionCreators', () =>{
         expect(AuthActionCreators.registration).toBeInstanceOf(Function);
     });
 
-
-
 })
